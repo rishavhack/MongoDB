@@ -31,17 +31,24 @@ const pageSize = 10;
 
 
 async function updateCourse(id) {
-	const course = await Course.findById(id);
-	if(!course) return;
+	// const course = await Course.findById(id);
+	// if(!course) return;
 
-	course.isPublished  = true;
-	course.author = 'Another Author'
+	// course.isPublished  = true;
+	// course.author = 'Another Author'
 
 	// course.set({
 	// 	isPublished  = true;
 	// 	author = 'Another Author'
 	// })
-	const result = await course.save();
+	//const result = await course.save();
+	
+	const result = await Course.update({_id:id},{
+		$set: {
+			author: 'Mosh',
+			isPublished: false
+		}
+	})
 	console.log(result)
 }
 updateCourse('61fa9031a308ce7b9677dfe0')
