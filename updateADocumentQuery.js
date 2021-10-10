@@ -50,5 +50,14 @@ async function updateCourse(id) {
 		}
 	})
 	console.log(result)
+
+	// const result = await Course.findByIdAndUpdate(id,{
+	// 	$set: {
+	// 		author: 'Jack',
+	// 		isPublished: true
+	// 	}
+	// }, { new : true})
+	// console.log(result)
+
 }
 updateCourse('61fa9031a308ce7b9677dfe0')
