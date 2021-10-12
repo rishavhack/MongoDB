@@ -5,7 +5,12 @@ mongoose.connect('mongodb://localhost/playground')
 .catch(err => console.log('Could not connect to Mongodb..',err))
 
 const courseSchema = new mongoose.Schema({
-	name: { type:String, required:true},
+	name: { type:String, 
+		required:true,
+		minlength:5,
+		maxlength:255,
+		//match: /pattern/
+	},
 	author: String,
 	tags:[String],
 	date: {type : Date, default: Date.now},
@@ -19,7 +24,7 @@ const courseSchema = new mongoose.Schema({
 const Course = mongoose.model('Course',courseSchema);
 async function createCourse() {
 	const course = new Course({
-//	name: 'Backend DB Course',
+	name: 'Backend DB Course',
 	author: 'Rishav',
 	tags: ['angular','frontend'],
 	isPublished :true,
