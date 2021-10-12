@@ -11,6 +11,11 @@ const courseSchema = new mongoose.Schema({
 		maxlength:255,
 		//match: /pattern/
 	},
+	category: {
+		type: String,
+		required:true,
+		enum: ['web','mobile','network']
+	},
 	author: String,
 	tags:[String],
 	date: {type : Date, default: Date.now},
@@ -25,9 +30,11 @@ const Course = mongoose.model('Course',courseSchema);
 async function createCourse() {
 	const course = new Course({
 	name: 'Backend DB Course',
+	category:'-',
 	author: 'Rishav',
 	tags: ['angular','frontend'],
 	isPublished :true,
+	price:10
 });
 
 	try {
