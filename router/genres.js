@@ -28,6 +28,17 @@ router.get('/:id',async (req,res)=>{
 	res.send(genre)
 })
 
+router.post('/',async (req,res) =>  {
+	if(Object.keys(req.body).length == 0 ) return res.status(400).send("Invalid Data")
+	if(!req.body.hasOwnProperty('name')) return res.status(400).send("Invalid Data")
+	let genre = new Genre({
+		name: req.body.name
+	})
+	const result = await genre.save();
+	res.send(result)
+})
+
+
 
 
 module.exports = router
