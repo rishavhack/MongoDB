@@ -40,5 +40,17 @@ router.post('/',async (req,res) =>  {
 
 
 
+router.put('/:id',async (req,res)=>{
+	const genre = await Genre.findByIdAndUpdate(req.params.id,{name: req.body.name},{
+		new:true
+	})
+	if (!genre) res.status(404).send("Not avaiable ID")
+
+	res.send(genre)
+})
+
+
+
+
 
 module.exports = router
