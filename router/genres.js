@@ -50,7 +50,11 @@ router.put('/:id',async (req,res)=>{
 })
 
 
-
+router.delete('/:id',async (req,res)=>{
+	const genre = await Genre.findByIdAndRemove(req.params.id)
+	if (!genre) res.status(404).send("Not avaiable ID")
+	res.send(genre)
+})
 
 
 module.exports = router
