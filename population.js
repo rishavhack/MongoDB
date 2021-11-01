@@ -28,7 +28,7 @@ async function createAuthor(name,bio,website){
 async function createCourse(name,author){
 	const course = new Course({
 		name,
-		website
+		author
 	});
 	const result = await course.save();
 	console.log(result);
@@ -40,3 +40,6 @@ async function listCourses(){
 }
 
 createAuthor('Mosh','My bio','My website');
+
+//createCourse('Node Course', '')
+//listCourses();
