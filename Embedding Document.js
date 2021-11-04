@@ -44,10 +44,20 @@ async function listCourses(){
 			.find()
 	console.log(courses)
 }
+// async function updateAuthor(courseId){
+// 	const course = await Course.update({_id:courseId},{
+// 		$set:{
+// 			'author.name': 'Rishav'
+// 		}
+// 	});
+// 	//course.author.name = 'Mosh Hamedani';
+// 	//course.save()
+// }
+
 async function updateAuthor(courseId){
 	const course = await Course.update({_id:courseId},{
-		$set:{
-			'author.name': 'Rishav'
+		$unset:{
+			'author': ''
 		}
 	});
 	//course.author.name = 'Mosh Hamedani';
